@@ -25,19 +25,19 @@ namespace LStoreJSON
             return (object)output;
 
         }
-        public static List<object> ConvertGenericTypeToObjectList<T>(this List<T> inList)
+        internal static List<object> ConvertGenericTypeToObjectList<T>(this List<T> inList)
         {
             List<object> outputObject = new List<object>();
             inList.ForEach(a => outputObject.Add((object)a));
             return outputObject;
         }
-        public static List<T> ConvertObjectToGenericType<T>(this List<object> inList)
+        internal static List<T> ConvertObjectToGenericType<T>(this List<object> inList)
         {
             List<T> outputObject = new List<T>();
             inList.ForEach(a => outputObject.Add((T)a));
             return outputObject;
         }
-        public static dynamic ToDynamic<T>(this T input)
+        internal static dynamic ToDynamic<T>(this T input)
         {
             return (dynamic)input;
         }

@@ -159,7 +159,16 @@ namespace LStoreJSON
             }
         }
 
+        private void AddItemToSaveList(object inType)
+        {
+            changedObjects.Add(inType.GetType());
+        }
 
+        /// <summary>
+        /// Determines if the type of object is saveable via the JSONStore class
+        /// </summary>
+        /// <typeparam name="T">Type of object</typeparam> 
+        /// <returns>Is the supplied type saveable</returns>
         public static bool IsTypeSaveable<T>()
         {
             bool output = false;
@@ -172,11 +181,6 @@ namespace LStoreJSON
                 }
             }
             return output;
-        }
-
-        private void AddItemToSaveList(object inType)
-        {
-            changedObjects.Add(inType.GetType());
         }
     }
 }
