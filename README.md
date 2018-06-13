@@ -11,17 +11,17 @@ Provide a lightweight local JSON object store. Any class can be stored as long a
 
 Package Manager:
 ```cmd
-Install-Package LStoreJSON -Version 1.0.0 
+Install-Package LStoreJSON
 ```
 
 .NET CLI
 ```cmd
-dotnet add package LStoreJSON --version 1.0.0 
+dotnet add package LStoreJSON
 ```
 
 Packet CLI
 ```cmd
-paket add LStoreJSON --version 1.0.0 
+paket add LStoreJSON
 ```
 
 ### Using
