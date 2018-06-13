@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LStoreJSON
 {
-    static class Helpers
+    internal static class Helpers
     {
         internal static object GetKeyValeue<T>(this object input)
         {

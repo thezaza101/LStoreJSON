@@ -30,11 +30,16 @@ namespace LStoreJSON
             }
         }
 
-        public void Add<T>(T o)
+        public void Add<T>(T o, bool skipValidation = true)
         {
-            string fileName = o.GetType().ToString() + ".json";
+            string fileName = o.GetType().ToString();
             List<T> existingElements = ReadObjects<T>();
-            if(IsTypeSaveable<T>())
+            if(skipValidation)
+            {
+                inMemoryDB[fileName].Add(o);
+                AddItemToSaveList(o);
+            }
+            else 
             {
                 if (existingElements.FindIndex(e => e.GetKeyValeue<T>().Equals(o.GetKeyValeue<T>())) >= 0)
                 {
@@ -46,11 +51,12 @@ namespace LStoreJSON
                     AddItemToSaveList(o);
                 }
             }
+            
         }
 
         public void Remove<T>(T o)
         {
-            string fileName = o.GetType().ToString() + ".json";
+            string fileName = o.GetType().ToString();
             List<T> existingElements = ReadObjects<T>();
             if (existingElements.FindIndex(e => e.GetKeyValeue<T>().Equals(o.GetKeyValeue<T>())) >= 0)
             {
@@ -72,6 +78,7 @@ namespace LStoreJSON
             {
                 SaveChanges(t);
             }
+            changedObjects.Clear();
         }
 
         /// <summary>
@@ -79,7 +86,7 @@ namespace LStoreJSON
         /// </summary>
         public void SaveChanges(Type t)
         {
-            string fileName = t.ToString() + ".json";
+            string fileName = t.ToString();
             string filePath = dbPath + fileName;
 
             if (!inMemoryDB.ContainsKey(fileName))
@@ -128,11 +135,9 @@ namespace LStoreJSON
             return ReadObjects<T>().AsReadOnly();
         }
 
-
-
         private List<T> ReadObjects<T>()
         {
-            string fileName = typeof(T).ToString() + ".json";
+            string fileName = typeof(T).ToString();
             string filePath = dbPath + fileName;
 
             if (inMemoryDB.ContainsKey(fileName))
