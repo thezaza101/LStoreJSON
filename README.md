@@ -46,3 +46,27 @@ js.SaveChanges();
 MyClass objectFromFile = js.Single<MyClass>(“Some Key”);
 ```
 
+### More info
+
+```cmd
+//add item of type to in memory store
+jsonStoreObject.Add<T>(T o)
+
+//remove item of type to in memory store
+jsonStoreObject.Remove<T>(T o)
+
+//Save changes present from in memory store to files
+jsonStoreObject.SaveChanges()
+
+//Returns all the objects of a type
+jsonStoreObject.All<T>()
+
+//Returns the object of a given type with a matching ID
+jsonStoreObject.Single<T>(object Id)
+
+//Determines if the supplied type can be saved using a JSONStore object
+JSONStore.IsTypeSaveable<T>()
+
+```
+
+
