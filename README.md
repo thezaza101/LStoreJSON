@@ -24,9 +24,9 @@ Packet CLI
 paket add LStoreJSON
 ```
 
-### Using
+### In your code...
 
-```cmd
+```cs
 class MyClass
 {
     [System.ComponentModel.DataAnnotations.Key]
@@ -48,7 +48,7 @@ MyClass objectFromFile = js.Single<MyClass>(“Some Key”);
 
 ### Methods
 
-```cmd
+```cs
 //add item of type to in memory store
 jsonStoreObject.Add<T>(T o)
 
