@@ -16,12 +16,12 @@ Install-Package LStoreJSON -Version 1.0.0
 
 .NET CLI
 ```cmd
-paket add LStoreJSON --version 1.0.0 
+dotnet add package LStoreJSON --version 1.0.0 
 ```
 
 Packet CLI
 ```cmd
-dotnet add package LStoreJSON --version 1.0.0 
+paket add LStoreJSON --version 1.0.0 
 ```
 
 ### Using
