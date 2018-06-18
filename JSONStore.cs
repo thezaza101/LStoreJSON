@@ -54,19 +54,14 @@ namespace LStoreJSON
             
         }
 
-        public void Remove<T>(T o)
+        
+        public bool Remove<T>(T o)
         {
             string fileName = o.GetType().ToString();
             List<T> existingElements = ReadObjects<T>();
-            if (existingElements.FindIndex(e => e.GetKeyValeue<T>().Equals(o.GetKeyValeue<T>())) >= 0)
-            {
-                existingElements.RemoveAll(e => e.GetKeyValeue<T>().Equals(o.GetKeyValeue<T>()));
-                AddItemToSaveList(o);
-            }
-            else
-            {
-                throw new Exception("Key \"" + o.GetKeyValeue<T>().ToString() + "\" does not exist");
-            }
+            T item = Single<T>(o.GetKeyValeue<T>());
+            AddItemToSaveList(o);            
+            return inMemoryDB[fileName].Remove(item);
         }
 
         /// <summary>
